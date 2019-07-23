@@ -1,0 +1,12 @@
+version: '3'
+services:
+  crud-shop:
+    container_name: crud-shop
+    hostname: server
+    image: "crud-shop:0.1"
+    working_dir: /usr/src/server
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    command: "gradle bootRun"
