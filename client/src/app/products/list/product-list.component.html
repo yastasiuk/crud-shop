@@ -1,6 +1,8 @@
 <h2>product-list works!</h2>
-<ul style="list-style: none">
+<ol>
     <li *ngFor="let product of products; index as i;">
-        {{product.id}}. <span>{{product.name}}</span>
+        <a routerLink="/product/{{product.id}}/edit">
+            {{product.name}}
+        </a>
     </li>
-</ul>
+</ol>
