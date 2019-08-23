@@ -13,8 +13,8 @@ export class ProductManagerService {
     constructor(private http: HttpClient) { }
 
     // Move to observables ()
-    getProducts(): Observable<Product[]> {
-        return this.http.get<Product[]>(`${this.productsUrl}/list`);
+    getProducts(params: any): Observable<Product[]> {
+        return this.http.get<Product[]>(`${this.productsUrl}/list`, { params });
     }
 
     updateProduct(id: string, product: FormData): Observable<Product> {

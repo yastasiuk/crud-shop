@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+    search: string;
 
-  constructor() { }
+    constructor(private router: Router) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() { }
+
+    onSearchChange(newValue: string) {
+        this.search = newValue;
+    }
+
+    onSearch(e: Event) {
+        e.preventDefault();
+        console.log('onSearch', this.search);
+        if (this.search) {
+            const queryParams = {
+                name: this.search
+            };
+            console.log('queryParams', queryParams);
+            this.router.navigate(['/list'], { queryParams });
+        }
+    }
 
 }
