@@ -18,6 +18,9 @@ bootJar {
     version =  '0.1.0'
 }
 
+build.mustRunAfter clean
+task stage(dependsOn: ['clean', 'build'])
+
 repositories {
     mavenCentral()
     flatDir name: 'externalClientProject',
