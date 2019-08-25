@@ -19,13 +19,10 @@ export class NavBarComponent implements OnInit {
 
     onSearch(e: Event) {
         e.preventDefault();
-        if (this.search) {
-            const queryParams = {
-                name: this.search
-            };
-            console.log('queryParams', queryParams);
-            this.router.navigate(['/list'], { queryParams });
-        }
+        const queryParams = {
+            name: this.search
+        };
+        this.router.navigate(['/list'], { queryParams });
     }
 
 }

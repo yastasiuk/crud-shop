@@ -1,11 +1,14 @@
-<div id="search-query" *ngIf="(searchQueryParams | json) != ({} | json)">
+<div id="search-query" *ngIf="searchQueryParams.size !== 0">
     <div>
-        Searched by name: "{{searchQueryParams.name}}"
+        Searched by:
     </div>
-    <div *ngFor="let item of searchQueryParams | keyvalue">
-        {{searchQueryParams[item]}}
-    </div>
+    <ol>
+        <li *ngFor="let item of searchQueryParams | keyvalue">
+            "{{item.key}}" = "{{item.value}}"
+        </li>
+    </ol>
 </div>
+<div>Products List:</div>
 <ol>
     <li *ngFor="let product of products; index as i;">
         <a routerLink="/product/{{product.id}}/edit">

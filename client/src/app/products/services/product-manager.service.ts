@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/model/product';
 
@@ -13,7 +13,7 @@ export class ProductManagerService {
     constructor(private http: HttpClient) { }
 
     // Move to observables ()
-    getProducts(params: any): Observable<Product[]> {
+    getProducts(params: { [key: string]: string | string[]}): Observable<Product[]> {
         return this.http.get<Product[]>(`${this.productsUrl}/list`, { params });
     }
 
