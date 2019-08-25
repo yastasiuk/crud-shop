@@ -16,12 +16,10 @@ export class ProductListComponent implements OnInit {
     constructor(private productManagerService: ProductManagerService, private route: ActivatedRoute) {}
 
     ngOnInit() {
-        // TODO: use pipe!
-        const query = this.route.snapshot.queryParamMap;
-        if (query.get('name')) {
-            this.searchQueryParams.name = query.get('name');
-        }
-        this.getProducts(this.searchQueryParams);
+        this.route.queryParamMap.subscribe(queryParams => {
+            this.searchQueryParams.name = queryParams.get('name');
+            this.getProducts(this.searchQueryParams);
+        });
     }
 
     getProducts(query: object): void {

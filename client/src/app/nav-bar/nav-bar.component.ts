@@ -19,7 +19,6 @@ export class NavBarComponent implements OnInit {
 
     onSearch(e: Event) {
         e.preventDefault();
-        console.log('onSearch', this.search);
         if (this.search) {
             const queryParams = {
                 name: this.search
