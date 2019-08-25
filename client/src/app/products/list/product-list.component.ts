@@ -11,7 +11,7 @@ import { ProductManagerService } from '../services/product-manager.service';
 export class ProductListComponent implements OnInit {
 
     products: Product[];
-    private searchQueryParams: any = {};
+    searchQueryParams: any = {};
 
     constructor(private productManagerService: ProductManagerService, private route: ActivatedRoute) {}
 

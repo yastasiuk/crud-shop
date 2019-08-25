@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build",
+    "build": "ng build --outputHashing=bundles --prod=true --deploy-url=/public/",
+    "serverBuild": "rm -rf ../server/src/main/webapp/static/* && npm run build && mv ./dist/client/* ../server/src/main/webapp/static",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
