@@ -38,13 +38,12 @@ public class ProductDaoImpl implements ProductDao {
     
 
     @Override
-    public void updateProduct(Product product) {
-//        int index = getProductById(product.getId());
-//        products.set(index, product);
+    public Product updateProduct(Product product) {
+        return repository.save(product);
     }
 
     @Override
     public void deleteProduct(String productId) {
-        repository.deleteProductById(productId);
+        repository.deleteById(productId);
     }
 }

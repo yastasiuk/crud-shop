@@ -39,8 +39,8 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public Product createProduct(MultipartHttpServletRequest request, @RequestParam("image") MultipartFile imageFile) {
-        // TODO: Update it
+    public Product createProduct(MultipartHttpServletRequest request) {
+        MultipartFile imageFile = request.getFile("image");
         List<Image> images = new ArrayList<>();
         if (imageFile != null) {
             images.add(imageService.saveImageFile(imageFile));
@@ -77,8 +77,7 @@ public class ProductsController {
     }
 
     @RequestMapping(value = "{productId}", method = RequestMethod.PATCH)
-    public Product updateProduct(@PathVariable("productId") String productId, MultipartHttpServletRequest request,
-            @RequestParam("image") MultipartFile image)
+    public Product updateProduct(@PathVariable("productId") String productId, MultipartHttpServletRequest request)
             throws ResponseStatusException {
 
         Product product = productsDao.getProductById(productId);
@@ -102,9 +101,13 @@ public class ProductsController {
             product.setVendorCode(request.getParameter("vendorCode"));
         }
 
-        // if (request.getParameter("image") != null) {
-        //     product.setImage(request.getParameter("image"));
-        // }
+
+        MultipartFile imageFile = request.getFile("image");
+        List<Image> images = new ArrayList<>();
+        if (imageFile != null) {
+            images.add(imageService.saveImageFile(imageFile));
+            product.setImageIds(images.stream().map(Image::getId).collect(Collectors.toList()));
+        }
 
         productsDao.updateProduct(product);
 

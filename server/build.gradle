@@ -20,6 +20,12 @@ bootJar {
 
 repositories {
     mavenCentral()
+    flatDir name: 'externalClientProject',
+            dirs: "${projectDir}/../client"
+}
+
+springBoot {
+    mainClassName = 'com.yastasiuk.shop.Application'
 }
 
 sourceCompatibility = 1.8
@@ -28,9 +34,10 @@ targetCompatibility = 1.8
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("com.h2database:h2")
+
     implementation('org.hibernate:hibernate-core:5.4.4.Final')
     // https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa
-    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.0.0.RELEASE'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.1.10.RELEASE'
     // https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api
     compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
 
