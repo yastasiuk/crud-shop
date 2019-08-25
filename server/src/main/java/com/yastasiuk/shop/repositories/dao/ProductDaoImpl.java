@@ -18,12 +18,16 @@ public class ProductDaoImpl implements ProductDao {
 
     public ProductDaoImpl(ProductRepository repository) {
         this.repository = repository;
-        // products.add(new Product(1, "Product One", "Series 1", "Manufacturer 1", "VendorCode 1", ""));
     }
     
     @Override
     public List<Product> getAllProducts() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Product> getProductsByName(String name) {
+        return repository.getProductsByName(name);
     }
 
     @Override

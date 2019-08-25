@@ -34,7 +34,10 @@ public class ProductsController {
     ImageService imageService;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public List<Product> productsList() {
+    public List<Product> productsList(@RequestParam(required = false) String name) {
+        if (name != null) {
+            return productsDao.getProductsByName(name);
+        }
         return productsDao.getAllProducts();
     }
 

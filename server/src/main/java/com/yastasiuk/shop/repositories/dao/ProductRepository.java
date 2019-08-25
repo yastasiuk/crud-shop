@@ -10,5 +10,5 @@ public interface ProductRepository extends CrudRepository<Product, String> {
      List<Product> findAll();
      Product save(Product product);
      Product getProductById(String productId);
-     void deleteProductById(String productId);
+     List<Product> getProductsByName(String name);
 }
