@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.yastasiuk.shop.repositories.dao.ProductDaoImpl;
 import com.yastasiuk.shop.model.Product;
-import com.yastasiuk.shop.storage.StorageService;
 
 import java.util.ArrayList;
 import java.util.List;
